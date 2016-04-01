@@ -1,0 +1,29 @@
+.action-btn{
+	margin-right:0.5em !important;
+	color: #fff;
+}
+.action-btn:hover{
+    color: #db8b0b;
+}
+.pageTitle{
+	color: #605cab;
+}
+.main-action-btn{
+	margin-right:0.5em !important;
+	color: #605cab !important;
+}
+.main-action-btn:hover{
+	color: #555299 !important;
+}
+.info-reminder{
+	margin: 1em 0 1em 1em !important;
+}
+#deleteModal p{
+	font-size: 1.3em;
+}
+#deleteModal strong{
+	color: #db8b0b !important;
+}
+#deleteModal .pageName{
+	color: #001F3F !important;
+}
