@@ -50,14 +50,15 @@ class PageController extends Controller
     }
     public function editUserPage(Request $request, $username, $pagename){
        if ($this->checkUsername($username)) {
-         $page = Page::findByName($pagename)->first();
+         $oldpagename = $this->removeUnderscore($pagename);
+         $page = Page::findByName($oldpagename)->first();
          if (!empty($page)) {
            $page->name = $request->input('name');
            if ($page->update()) {
-              $request->session()->flash('success_message', $page->name." page was successfully updated!");
+              $request->session()->flash('success_message', "<i class='pageName'>".$page->name."</i> page was successfully updated!");
               return redirect()->route('user.pages', $this->logged_user->username);
            }else{
-              $request->session()->flash('error_message', $page->name." page was not updated. Please try again!");
+              $request->session()->flash('error_message', "<i class='pageName'>".$page->name."</i> page was not updated. Please try again!");
               return redirect()->route('user.pages', $this->logged_user->username);
            }
          }else{
@@ -97,7 +98,7 @@ class PageController extends Controller
        	   	 $page->hasimages = 0;
        	   	 $page->hastextblocks = 0;
        	   	 if ($page->save()) {
-       	   	 	$request->session()->flash('success_message', $page->name.' page has just been created!');
+       	   	 	$request->session()->flash('success_message', "<i class='pageName'>".$page->name.'</i> page has just been created!');
        	   	 return redirect()->route('user.pages', $this->logged_user->username);
        	   	 }else{
                 $request->session()->flash('error_message', "We couldn't create your page. Please check your internet connection and try again. Thanks!");
@@ -111,20 +112,21 @@ class PageController extends Controller
     public function deleteUserPage(Request $request, $username, $pagename){
       //deletes the user page with it's product as well
         if ($this->checkUsername($username)) {
-            $page = Page::findByName($pagename)->first();
+            $oldpagename = $this->removeUnderscore($pagename);
+            $page = Page::findByName($oldpagename)->first();
             if (!empty($page)) {
                 $product = Product::findByPage($page->id)->first();
                 if (!empty($product)) {
                      if ($product->delete()) {
                           if ($page->delete()) {
-                              $request->session()->flash('success_message', $page->name." page was deleted successfully!");
+                              $request->session()->flash('success_message', "<i class='pageName'>".$page->name."</i> page was deleted successfully!");
                               return redirect()->route('user.pages', $this->logged_user->username);
                           }else{
-                              $request->session()->flash('error_message', "We couldn't delete ".$page->name." page. Please check your internet connection and try again. Thanks!");
+                              $request->session()->flash('error_message', "We couldn't delete "."<i class='pageName'>".$page->name."</i> page. Please check your internet connection and try again. Thanks!");
                               return redirect()->route('user.pages', $this->logged_user->username);
                           }
                      }else{
-                        $request->session()->flash('error_message', $page->name." page's product can't be found!");
+                        $request->session()->flash('error_message', "<i class='pageName'>".$page->name."</i> page's product can't be found!");
                         return redirect()->route('user.pages', $this->logged_user->username);
                      }
                 }else{
@@ -133,7 +135,7 @@ class PageController extends Controller
                      return redirect()->route('user.pages', $this->logged_user->username); 
 
                    }else{
-                       $request->session()->flash('error_message', "We couldn't delete ".$page->name." page. please check your internet connection");
+                       $request->session()->flash('error_message', "We couldn't delete "."<i class='pageName'>".$page->name."<i/> page. please check your internet connection");
                        return redirect()->route('user.pages', $this->logged_user->username);
                    }
                 }

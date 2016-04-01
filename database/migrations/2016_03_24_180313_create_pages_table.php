@@ -14,8 +14,8 @@ class CreatePagesTable extends Migration
     {
         Schema::create('pages', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id')->unsigned()->nullable();
-            $table->integer('product_id')->unsigned()->nullable();
+            $table->integer('user_id')->unsigned();
+            $table->integer('product_id')->unsigned();
             $table->string('product_name', 255);
             $table->string('name', 255);
             $table->boolean('hasproduct');

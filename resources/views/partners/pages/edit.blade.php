@@ -32,7 +32,7 @@
                 </div><!-- /.box-header -->
                 <!-- form start -->
 
-                {{ Form::model($page, array('route' =>['user.page.edit', $logged_user->username, $page->name] )) }}
+                {{ Form::model($page, array('route' =>['user.page.edit', $logged_user->username, str_slug($page->name, '_')] )) }}
                    <div class="box-body">
                     <div class="form-group">
                       {{ Form::label('name', 'Page Name')}}

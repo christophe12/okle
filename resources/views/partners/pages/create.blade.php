@@ -10,12 +10,23 @@
           </h1>
           <ol class="breadcrumb">
             <li class="active">{{ $page_title }}</li>
-            <li><a href="#"><i class="fa fa-archive"></i> Products</a></li>
+            @if($page_title == "Pages")
+            <li>
+            <a href="#">
+            <i class="fa fa-archive"></i> Products
+            </a></li>
+            @else
+            <li>
+            <a href="{{route('user.pages', $logged_user->username)}}">
+            <i class="fa fa-file"></i> Pages
+            </a></li>
+            @endif
           </ol>
       </section>
       <section class="content">
       	<div class="row">
       	  <div class="content">
+           @include('partials.admin.message')
       	   @if(count($errors) > 0)
       	      <div class="alert alert-danger alert-dismissable">
       	       <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
@@ -39,7 +50,7 @@
                       {{ Form::text('name', null, ['class' => 'form-control', 'placeholder' => 'Name']) }}
                     </div>
                     <div class="box-footer">
-                    <button type="submit" class="btn btn-primary">Create</button>
+                    <button type="submit" class="btn btn-primary"><i class="fa fa-plus"></i> Create</button>
                     <a href="{{ route('user.pages', $logged_user->username)}}" class="btn btn-danger"> Cancel</a>
                     </div>
                   </div><!-- /.box-body -->
@@ -56,7 +67,7 @@
                       {{ Form::text('description', null, ['class' => 'form-control', 'placeholder' => 'Description']) }}
                     </div>
                     <div class="box-footer">
-                    <button type="submit" class="btn btn-primary">Create</button>
+                    <button type="submit" class="btn btn-primary"><i class="fa fa-plus"></i> Create</button>
                     <a href="{{ route('user.pages', $logged_user->username)}}" class="btn btn-danger"> Cancel</a>
                     </div>
                   </div><!-- /.box-body -->

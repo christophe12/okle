@@ -14,11 +14,13 @@ class CreateTextBlocksTable extends Migration
     {
         Schema::create('textBlocks', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('product_id')->unsigned()->unique();
-            $table->integer('page_id')->unsigned()->unique();
+            $table->integer('product_id')->unsigned();
+            $table->integer('page_id')->unsigned();
             $table->text('content');
             $table->integer('position')->unsigned();
             $table->timestamps();
+
+            $table->index(['product_id', 'page_id']);
         });
     }
 

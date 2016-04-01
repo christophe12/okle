@@ -14,9 +14,11 @@ class CreateClicksTable extends Migration
     {
         Schema::create('clicks', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('page_id')->unsigned()->unique();
-            $table->integer('product_id')->unsigned()->unique();
+            $table->integer('page_id')->unsigned();
+            $table->integer('product_id')->unsigned();
             $table->timestamps();
+
+            $table->index(['product_id', 'page_id']);
         });
     }
 

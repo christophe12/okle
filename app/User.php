@@ -34,4 +34,13 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+
+    public function getUsernameAttribute($username){
+        return strtolower($username);
+    }
+
+    public function setUsernameAttribute($username){
+        $this->attributes['username'] = strtolower($username);
+    }
 }

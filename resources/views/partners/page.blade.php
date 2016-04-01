@@ -38,7 +38,7 @@
                          No product &nbsp;<a href="{{ route("user.page.product.form.create", [$logged_user->username, str_slug($page->name, "_")])}}" class="action-btn" style="font-size:1.1em" title="Add a product"><i class="fa fa-plus"></i></a>
                      @endif
                   </h5>
-                  <a href="#" class="pull-right action-btn deleteBtn" style="font-size:1.1em" title="Delete Page" data-toggle="modal" page="{{$page->name}}" user="{{$logged_user->username}}"><i class="fa fa-trash-o"></i></a>
+                  <a href="#" class="pull-right action-btn deleteBtn" style="font-size:1.1em" title="Delete Page" data-toggle="modal" page="{{str_slug($page->name, '_')}}" user="{{$logged_user->username}}"><i class="fa fa-trash-o"></i></a>
                   <a href="{{ route('user.page.form.edit', [$logged_user->username, str_slug($page->name, '_')])}}" class="pull-right action-btn" style="font-size:1.1em"><i class="fa fa-pencil-square-o"></i></a>
                 </div>
                 <div class="box-footer no-padding">
