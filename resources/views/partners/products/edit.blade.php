@@ -17,13 +17,13 @@
                </ul>
               </div>
       	   @endif
-      	     <div class="box box-primary">
+      	     <div class="box box-success">
                 <div class="box-header with-border">
-                  <h3 class="box-title">Product Creation</h3>
+                  <h3 class="box-title">Product Update</h3>
                 </div><!-- /.box-header -->
                 <!-- form start -->
 
-                {{ Form::open(array('route' => ['product.create', $logged_user->username])) }}
+                {{ Form::model($product, array('route' => ['update.product', $logged_user->username, $product->name])) }}
                    <div class="box-body">
                     <div class="form-group">
                       {{ Form::label('Product name', 'Product Name')}}
@@ -34,7 +34,7 @@
                       {{ Form::text('description', null, ['class' => 'form-control', 'placeholder' => 'description']) }}
                     </div>
                     <div class="box-footer">
-                    <button type="submit" class="btn btn-primary">Create</button>
+                    <button type="submit" class="btn btn-primary"><i class="fa fa-edit"></i>Edit</button>
                     <a href="{{ route('user.products', $logged_user->username)}}" class="btn btn-danger"> Cancel</a>
                     </div>
                   </div><!-- /.box-body -->

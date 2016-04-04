@@ -15,12 +15,12 @@ class CreateImagesTable extends Migration
         Schema::create('images', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('product_id')->unsigned();
-            $table->integer('page_id')->unsigned();
             $table->string('name', 255);
-            $table->integer('position')->unsigned();
+            $table->string('path', 255);
+            $table->string('owned_by', 255);
             $table->timestamps();
 
-            $table->index(['product_id', 'page_id']);
+            $table->index(['product_id', 'owned_by']);
         });
     }
 

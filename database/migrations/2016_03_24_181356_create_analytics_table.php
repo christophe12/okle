@@ -15,13 +15,13 @@ class CreateAnalyticsTable extends Migration
         Schema::create('analytics', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('page_id')->unsigned();
-            $table->integer('product_id')->unsigned();
+            $table->integer('user_id')->unsigned();
             $table->integer('views')->unsigned();
             $table->integer('sales')->unsigned();
-            $table->integer('clicks')->unsigned();
+            $table->integer('shares')->unsigned();
             $table->timestamps();
 
-            $table->index(['product_id', 'page_id']);
+            $table->index(['user_id', 'page_id']);
         });
     }
 

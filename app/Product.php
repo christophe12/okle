@@ -55,7 +55,8 @@ class Product extends Model
         return $query->where('user_id', $userId);
     }
 
-    public function scopefindByPage($query, $pageId){
-        return $query->where('page_id', $pageId);
+    public function scopefindByName($query, $productName){
+        return $query->where('name', $productName);
     }
+
 }

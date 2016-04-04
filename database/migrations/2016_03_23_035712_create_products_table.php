@@ -15,12 +15,12 @@ class CreateProductsTable extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id')->unsigned();
-            $table->integer('page_id')->unsigned();
             $table->string('name', 255);
             $table->string('description', 255);
+            $table->boolean('has_content');
             $table->timestamps();
 
-            $table->index(['name', 'user_id', 'page_id']);
+            $table->index(['name', 'user_id']);
 
         });
     }

@@ -27,3 +27,7 @@
 .pageName{
 	color: #001F3F !important;
 }
+
+.customTable td a{
+	margin-right: 1em;
+}

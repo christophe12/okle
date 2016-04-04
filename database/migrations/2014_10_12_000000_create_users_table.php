@@ -17,11 +17,12 @@ class CreateUsersTable extends Migration
             $table->string('username', 255);
             $table->string('email')->unique();
             $table->string('companyName', 255);
+            $table->string('role');
             $table->string('password', 60);
             $table->rememberToken();
             $table->timestamps();
 
-            $table->index('username');
+            $table->index(['username', 'role']);
         });
     }
 

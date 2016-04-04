@@ -38,9 +38,9 @@
             @endif
 
             @if ($page_title == "Profile")
-            <li class="active"><a href="#"><i class="fa fa-user"></i> <span>Profile</span></a></li>
+            <li class="active"><a href="{{ route('user.profile', $logged_user->username) }}"><i class="fa fa-user"></i> <span>Profile</span></a></li>
             @else
-            <li><a href="#"><i class="fa fa-user"></i> <span>Profile</span></a></li>
+            <li><a href="{{ route('user.profile', $logged_user->username) }}"><i class="fa fa-user"></i> <span>Profile</span></a></li>
             @endif
 
             @if ($page_title == "Pages")
@@ -50,9 +50,9 @@
             @endif
 
             @if ($page_title == "Products")
-            <li class="active"><a href="#"><i class="fa fa-archive"></i> <span>Products</span></a></li>
+            <li class="active"><a href="{{ route('user.products', $logged_user->username) }}"><i class="fa fa-archive"></i> <span>Products</span></a></li>
             @else
-            <li><a href="#"><i class="fa fa-archive"></i> <span>Products</span></a></li>
+            <li><a href="{{ route('user.products', $logged_user->username) }}"><i class="fa fa-archive"></i> <span>Products</span></a></li>
             @endif
           </ul><!-- /.sidebar-menu -->
         </section>

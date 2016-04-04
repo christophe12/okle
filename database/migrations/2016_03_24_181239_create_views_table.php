@@ -15,10 +15,9 @@ class CreateViewsTable extends Migration
         Schema::create('views', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('page_id')->unsigned();
-            $table->integer('product_id')->unsigned();
             $table->timestamps();
 
-            $table->index(['product_id', 'page_id']);
+            $table->index('page_id');
         });
     }
 

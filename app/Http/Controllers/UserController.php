@@ -29,7 +29,16 @@ class UserController extends Controller
     }
 
     public function profile($username){
-    	//placeholder for the profile view
+    	if ($this->checkUsername($username)) {
+        $page_title = "Profile";
+        return view('partners.profile')->with([
+           'page_title' => $page_title,
+           'logged_user' => $this->logged_user
+          ]);
+        
+      }else{
+        return $this->logoutUser();
+      }
     }
 
     public function page($username){
