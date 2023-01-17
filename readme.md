@@ -101,7 +101,7 @@ password: secret
 
 ## Authors
 
-* **Christophe Mutabazi** - *Initial work* - [Personalwebsite](http://orbit.surge.sh/)
+* **Christophe Mutabazi** - *Initial work*
 
 ## License
 
